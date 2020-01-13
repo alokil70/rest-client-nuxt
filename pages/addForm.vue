@@ -1,42 +1,35 @@
 <template>
     <v-app id="inspire">
-
-        <v-card outlined v-for="message in messages" :key="message.id">
-            <v-card-title class="headline">
-                {{message.text}}-----{{message.text1}}
-
-                <v-col
-                    class="text-right">
-                    <v-btn
-                        small
-                        text
-                        @click="btnDelete(message.id)"
-                    >Удалить
-                    </v-btn>
-                </v-col>
-            </v-card-title>
-
-
-            <v-card-text>
-                <li>
+        <div>
+            <v-card v-for="message in messages" :key="message.id" class="pa-2" outlined tile>
+                {{message.text}}
+                <div class="d-flex ml-auto">
+                <i>
                     Перейти к карточке
                     <a href="" @click.prevent="openMessage(message.id)">номер id {{message.id}}</a>
-                </li>
+                </i>
                 <v-btn
                     color="primary"
                     x-small
                     nuxt
-                    right
-
                     to="/inspire"
                 >
                     Изменить
                 </v-btn>
-            </v-card-text>
-
-
-        </v-card>
-
+                    <strong>
+                {{message.text1}}
+                    </strong>
+                <v-btn
+                    class="d-flex ml-auto"
+                    color="primary"
+                    x-small
+                    nuxt
+                    @click="btnDelete(message.id)"
+                >Удалить
+                </v-btn>
+                </div>
+            </v-card>
+        </div>
 
         <v-btn
             bottom
@@ -182,12 +175,11 @@
                 return this.$axios.$delete("http://192.168.0.206:9000/message/" + id)
             }
         }
-
     }
 </script>
 
 <style scoped>
     .v-card {
-        margin-bottom: 10px;
+        margin: 5px;
     }
 </style>
