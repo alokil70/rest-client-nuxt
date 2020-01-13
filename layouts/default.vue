@@ -42,12 +42,12 @@
             >
                 <v-icon>mdi-application</v-icon>
             </v-btn>
-            <v-btn
+<!--            <v-btn
                 icon
                 @click.stop="fixed = !fixed"
             >
                 <v-icon>mdi-minus</v-icon>
-            </v-btn>
+            </v-btn>-->
             <v-toolbar-title v-text="title"/>
             <v-spacer/>
             <v-btn
@@ -64,7 +64,7 @@
 
             </v-container>
         </v-content>
-        <v-navigation-drawer
+<!--        <v-navigation-drawer
             v-model="rightDrawer"
             :right="right"
             temporary
@@ -80,7 +80,7 @@
                     <v-list-item-title>Switch drawer (click me)</v-list-item-title>
                 </v-list-item>
             </v-list>
-        </v-navigation-drawer>
+        </v-navigation-drawer>-->
         <v-footer
             :fixed="fixed"
             app
@@ -94,10 +94,15 @@
     export default {
         data() {
             return {
-                clipped: false,
-                drawer: false,
+                clipped: true,
+                drawer: true,
                 fixed: false,
                 items: [
+                    {
+                        icon: 'mdi-chart-bubble',
+                        title: 'Карточки',
+                        to: '/messages'
+                    },
                     {
                         icon: 'mdi-apps',
                         title: 'Welcome',
@@ -110,8 +115,13 @@
                     },
                     {
                         icon: 'mdi-chart-bubble',
-                        title: 'messages',
-                        to: '/messages'
+                        title: 'Редактор',
+                        to: '/addForm'
+                    },
+                    {
+                        icon: 'mdi-chart-bubble',
+                        title: 'stepper',
+                        to: '/stepper'
                     },
                     {
                         icon: 'mdi-chart-bubble',
@@ -122,7 +132,7 @@
                 miniVariant: false,
                 right: true,
                 rightDrawer: false,
-                title: 'Vuetify.js'
+                title: 'Ресторан'
             }
         }
     }
